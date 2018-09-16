@@ -1,0 +1,13 @@
+/* First: Create the script file to monitore - /etc/crontab  */
+sudo md5sum /etc/crontab | cut -d/ -f 1  >> crontab.txt
+
+/* Second: Compare teh script file with the current /etc/crontab */
+if (crontab.txt != $(sudo md5sum /etc/crontab | cut -d/ -f 1)
+then
+	mail -s "modification of /etc/crontab has been made" arguerin@student.42.fr < /etc/crontab
+fi
+
+/* Third: Schedule the sript with the below line */
+echo '00 00 * * * root sh ~/script.sh' | crontab
+
+/* Fourth: Control with crontab -l */

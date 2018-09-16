@@ -1,0 +1,3 @@
+sudo pkill tail
+
+#use - jobs - to control

@@ -1,0 +1,9 @@
+/* First: Create the script with the below line */
+echo 'sudo apt-get update -y  && sudo apt-get upgrade -y >> /var/log/update_script.log' >> ~/script_update.sh
+
+/* Second: Execute the script with sudo sh */
+
+/* Third: Schedule the sript with the below line */
+echo '00 04 * * 1 root sh ~/script_update.sh' | crontab
+
+/* Fourth: Control with crontab -l */
